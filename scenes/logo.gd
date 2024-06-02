@@ -12,8 +12,8 @@ func _ready():
 	rotation_degrees = test_rotation
 	test_scale = 2
 	scale = Vector2(test_scale, test_scale)
-	print(%Target.position)
-
+	print($"..".test_array)
+	$"..".test_function()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
