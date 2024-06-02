@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddqbi6wbgnii4"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_7jahi"]
-[ext_resource type="Texture2D" uid="uid://c42h25btywh8h" path="res://icon.svg" id="1_lqwlj"]
+[ext_resource type="Texture2D" uid="uid://ceno1ljfnnege" path="res://icon.svg" id="1_lqwlj"]
 [ext_resource type="Script" path="res://scenes/logo.gd" id="2_sk843"]
 [ext_resource type="PackedScene" uid="uid://d0eve05x3sq62" path="res://scenes/player/player.tscn" id="4_rjaod"]
 
@@ -13,3 +13,12 @@ texture = ExtResource("1_lqwlj")
 script = ExtResource("2_sk843")
 
 [node name="Player" parent="." instance=ExtResource("4_rjaod")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D/Sprite2D2"]
+
+[node name="Target" type="Sprite2D" parent="Sprite2D/Sprite2D2/Sprite2D3"]
+unique_name_in_owner = true
