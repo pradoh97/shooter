@@ -10,6 +10,17 @@ height = 100.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xn82d")
 
+[node name="laser_start_position" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="laser_start_position"]
+position = Vector2(12, -95)
+
+[node name="Marker2D2" type="Marker2D" parent="laser_start_position"]
+position = Vector2(20, -95)
+
+[node name="Marker2D3" type="Marker2D" parent="laser_start_position"]
+position = Vector2(30, -95)
+
 [node name="PlayerImage" type="Sprite2D" parent="."]
 texture = ExtResource("2_lmx87")
 
