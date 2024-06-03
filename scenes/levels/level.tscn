@@ -1,22 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddqbi6wbgnii4"]
+[gd_scene load_steps=4 format=3 uid="uid://ddqbi6wbgnii4"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_7jahi"]
+[ext_resource type="PackedScene" uid="uid://4nys8gc5q5wj" path="res://scenes/objects/gate.tscn" id="3_u16mp"]
 [ext_resource type="PackedScene" uid="uid://d0eve05x3sq62" path="res://scenes/player/player.tscn" id="4_rjaod"]
-[ext_resource type="PackedScene" uid="uid://c3ox3cwx0u7xf" path="res://scenes/objects/crate.tscn" id="4_s43y3"]
-[ext_resource type="PackedScene" uid="uid://kk8u3yt0k5lj" path="res://scenes/enemies/drone.tscn" id="5_wujj1"]
-[ext_resource type="PackedScene" uid="uid://bvuao78rjnivp" path="res://scenes/objects/bed.tscn" id="5_yonxn"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7jahi")
 
 [node name="Player" parent="." instance=ExtResource("4_rjaod")]
+position = Vector2(508, 486)
 
-[node name="Bed" parent="." instance=ExtResource("5_yonxn")]
-position = Vector2(585, 185)
+[node name="Gate" parent="." instance=ExtResource("3_u16mp")]
 
-[node name="Crate" parent="." instance=ExtResource("4_s43y3")]
-position = Vector2(1024, 176)
-rotation = 1.5708
-
-[node name="drone" parent="." instance=ExtResource("5_wujj1")]
-position = Vector2(0, 543)
+[connection signal="granade" from="Player" to="." method="_on_player_granade"]
+[connection signal="laser" from="Player" to="." method="_on_player_laser"]
+[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
