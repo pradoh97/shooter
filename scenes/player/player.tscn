@@ -8,9 +8,12 @@ radius = 48.0
 height = 100.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 22
 script = ExtResource("1_xn82d")
+metadata/_edit_group_ = true
 
 [node name="laser_start_position" type="Node2D" parent="."]
+rotation = 1.5708
 
 [node name="Marker2D" type="Marker2D" parent="laser_start_position"]
 position = Vector2(12, -95)
@@ -22,10 +25,12 @@ position = Vector2(20, -95)
 position = Vector2(30, -95)
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
+rotation = 1.5708
 texture = ExtResource("2_lmx87")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 40)
+position = Vector2(-47, 3)
+rotation = 1.39626
 shape = SubResource("CapsuleShape2D_f18m7")
 
 [node name="laser_timer" type="Timer" parent="."]
@@ -33,6 +38,12 @@ wait_time = 0.5
 
 [node name="granade_timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+rotation_smoothing_speed = 1.0
 
 [connection signal="timeout" from="laser_timer" to="." method="_on_laser_timer_timeout"]
 [connection signal="timeout" from="granade_timer" to="." method="_on_granade_timer_timeout"]

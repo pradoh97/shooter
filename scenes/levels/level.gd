@@ -7,13 +7,16 @@ func _on_gate_player_entered_gate(body):
 	print("Shit: ", body)
 
 
-func _on_player_granade(position):
-	var granade = granade_scene.instantiate()
-	granade.position = position
+func _on_player_granade(initial_position, initial_direction):
+	var granade = granade_scene.instantiate() as RigidBody2D
+	granade.position = initial_position
+	granade.linear_velocity = initial_direction * granade.speed
 	$Projectiles.add_child(granade)
 
 
-func _on_player_laser(position):
-	var laser = laser_scene.instantiate()
-	laser.position = position
+func _on_player_laser(initial_position, initial_direction):
+	var laser = laser_scene.instantiate() as Area2D
+	laser.position = initial_position 
+	laser.direction = initial_direction
+	laser.rotation_degrees = rad_to_deg(initial_direction.angle()) + 90
 	$Projectiles.add_child(laser)

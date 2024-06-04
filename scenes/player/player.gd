@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const speed : int = 500
 
-signal laser(position)
-signal granade(position)
+signal laser(initial_position : Vector2, initial_direction : Vector2)
+signal granade(initial_position : Vector2, initial_direction : Vector2)
 
 var can_laser : bool = true
 var can_granade : bool = true
@@ -20,17 +20,20 @@ func _process(_delta):
 	#Usa delta automaticamente
 	velocity = direction * speed
 	move_and_slide()
+	look_at(get_global_mouse_position())
+	var projectile_direction = (get_global_mouse_position() - position).normalized()
 	
 	if Input.is_action_pressed("primary action") and can_laser:
 		var laser_mark = $laser_start_position.get_child(randi() % $laser_start_position.get_child_count())
 		can_laser = false
 		$laser_timer.start()
-		laser.emit(laser_mark.global_position)
+		laser.emit(laser_mark.global_position, projectile_direction)
 	
 	if Input.is_action_pressed("secondary action") and can_granade:
+		var granade_mark = $laser_start_position.get_child(randi() % $laser_start_position.get_child_count())
 		can_granade = false
 		$granade_timer.start()
-		granade.emit(global_position)
+		granade.emit(granade_mark.global_position, projectile_direction)
 
 
 func _on_laser_timer_timeout():
