@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://sgk3g7wboauj"]
+[gd_scene load_steps=5 format=3 uid="uid://sgk3g7wboauj"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/laser.gd" id="1_4xf1n"]
 [ext_resource type="Texture2D" uid="uid://c4yc4houhi3j" path="res://graphics/projectiles/blue.png" id="1_o45o6"]
@@ -6,6 +6,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1j7a"]
 radius = 4.0
 height = 172.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hstka"]
+polygon = PackedVector2Array(1, -81, -3, -78, -6, -68, -7, -41, -6, -22, 0, 62, 5, -22, 7, -43, 7, -68, 5, -78)
 
 [node name="laser" type="Area2D"]
 collision_layer = 8
@@ -18,3 +21,7 @@ texture = ExtResource("1_o45o6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_s1j7a")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_hstka")
+sdf_collision = false
