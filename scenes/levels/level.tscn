@@ -1,162 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://ddqbi6wbgnii4"]
+[gd_scene load_steps=3 format=3 uid="uid://ddqbi6wbgnii4"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_7jahi"]
-[ext_resource type="Texture2D" uid="uid://c7ubcej8t5u1x" path="res://graphics/tilesets/soil.png" id="2_8djr0"]
-[ext_resource type="Texture2D" uid="uid://kylyv3jioqmo" path="res://graphics/ground/stones.png" id="2_ljvjw"]
-[ext_resource type="Texture2D" uid="uid://dm3iip41y05nj" path="res://graphics/decals/dirt_patch.png" id="3_7r21w"]
-[ext_resource type="PackedScene" uid="uid://4nys8gc5q5wj" path="res://scenes/objects/gate.tscn" id="3_u16mp"]
-[ext_resource type="Texture2D" uid="uid://lsfe1alff3qp" path="res://graphics/decals/moss/moss_1.png" id="4_k16kt"]
 [ext_resource type="PackedScene" uid="uid://d0eve05x3sq62" path="res://scenes/player/player.tscn" id="4_rjaod"]
-[ext_resource type="Texture2D" uid="uid://cj5lot7v343uv" path="res://graphics/decals/moss/moss_2.png" id="5_o0t0r"]
-[ext_resource type="Texture2D" uid="uid://bmkfoceqr8f2s" path="res://graphics/decals/moss/moss_3.png" id="6_62iqj"]
-[ext_resource type="Texture2D" uid="uid://b3mmxfne2hm4a" path="res://graphics/decals/moss/moss_4.png" id="7_ro6lk"]
-[ext_resource type="Texture2D" uid="uid://cfwn66o1riv8c" path="res://graphics/decals/moss/moss_5.png" id="8_y4kvy"]
-[ext_resource type="Texture2D" uid="uid://yn00fjrmk5is" path="res://graphics/tilesets/outside_walls.png" id="9_4f522"]
-[ext_resource type="PackedScene" uid="uid://bdil3hxr4n5wb" path="res://scenes/houses/house.tscn" id="13_fu4m1"]
-[ext_resource type="PackedScene" uid="uid://c5q0en5vvsj2x" path="res://scenes/objects/steam_vent.tscn" id="14_yg2xr"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ax80c"]
-resource_name = "walls"
-texture = ExtResource("9_4f522")
-texture_region_size = Vector2i(390, 390)
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0 = 0
-1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_0/angular_velocity = 0.0
-2:1/0 = 0
-2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:1/0/physics_layer_0/angular_velocity = 0.0
-0:2/0 = 0
-0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:2/0/physics_layer_0/angular_velocity = 0.0
-1:2/0 = 0
-1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:2/0/physics_layer_0/angular_velocity = 0.0
-2:2/0 = 0
-2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:2/0/physics_layer_0/angular_velocity = 0.0
-0:3/0 = 0
-0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:3/0/physics_layer_0/angular_velocity = 0.0
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j04mt"]
-texture = ExtResource("2_8djr0")
-texture_region_size = Vector2i(390, 390)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0 = 0
-1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_0/angular_velocity = 0.0
-2:1/0 = 0
-2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:1/0/physics_layer_0/angular_velocity = 0.0
-0:2/0 = 0
-0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:2/0/physics_layer_0/angular_velocity = 0.0
-1:2/0 = 0
-1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:2/0/physics_layer_0/angular_velocity = 0.0
-2:2/0 = 0
-2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:2/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSet" id="TileSet_l3tjp"]
-tile_size = Vector2i(390, 390)
-physics_layer_0/collision_layer = 16
-physics_layer_0/collision_mask = 15
-sources/0 = SubResource("TileSetAtlasSource_ax80c")
-sources/1 = SubResource("TileSetAtlasSource_j04mt")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_7jahi")
 
 [node name="ground" type="Node2D" parent="."]
 
-[node name="soil" type="Sprite2D" parent="ground"]
-texture_repeat = 2
-position = Vector2(2897, 1016)
-texture = ExtResource("2_ljvjw")
-region_enabled = true
-region_rect = Rect2(0, 0, 11500, 5000)
-
-[node name="decoration" type="Sprite2D" parent="ground"]
-modulate = Color(0.805724, 0.654371, 0.462473, 1)
-position = Vector2(-597, 967)
-texture = ExtResource("3_7r21w")
-
-[node name="decoration2" type="Sprite2D" parent="ground"]
-modulate = Color(0.805724, 0.654371, 0.462473, 1)
-position = Vector2(-1837, 330)
-rotation = -1.21349
-scale = Vector2(0.325581, 0.325581)
-texture = ExtResource("3_7r21w")
-
-[node name="decoration3" type="Sprite2D" parent="ground"]
-modulate = Color(0.805724, 0.654371, 0.462473, 1)
-position = Vector2(2154, 611)
-rotation = 0.663725
-scale = Vector2(0.703133, 0.703133)
-texture = ExtResource("3_7r21w")
-
-[node name="moss1" type="Sprite2D" parent="ground"]
-position = Vector2(-1514, 1316)
-texture = ExtResource("4_k16kt")
-
-[node name="moss2" type="Sprite2D" parent="ground"]
-position = Vector2(973, 401)
-texture = ExtResource("5_o0t0r")
-
-[node name="moss3" type="Sprite2D" parent="ground"]
-position = Vector2(436, 1966)
-texture = ExtResource("6_62iqj")
-
-[node name="moss4" type="Sprite2D" parent="ground"]
-position = Vector2(2182, 1994)
-texture = ExtResource("7_ro6lk")
-
-[node name="moss5" type="Sprite2D" parent="ground"]
-position = Vector2(-242, 1736)
-texture = ExtResource("8_y4kvy")
-
-[node name="terrain" type="TileMap" parent="ground"]
-tile_set = SubResource("TileSet_l3tjp")
-format = 2
-layer_0/name = "Soil"
-layer_0/tile_data = PackedInt32Array(1, 65537, 0, 0, 1, 0, 2, 131073, 0, 65536, 1, 1, 131072, 1, 1, 196608, 1, 1, 262144, 1, 2, 196609, 65537, 1, 262145, 65537, 2, 262146, 131073, 2, 196610, 131073, 1, 131074, 131073, 1, 65538, 131073, 1, 65537, 65537, 1, 131073, 65537, 1)
-layer_1/name = "Walls"
-layer_1/tile_data = PackedInt32Array(-3, 65536, 0, -4, 65536, 0, -5, 65536, 0, -6, 65536, 0, -7, 65536, 0, -8, 65536, 1, 65528, 0, 2, 131062, 65536, 1, 196598, 0, 2, 262134, 0, 2, 327670, 0, 2, 393207, 65536, 0, 393206, 65536, 2, 393208, 65536, 0, 393209, 131072, 1, 458745, 0, 2, 131064, 131072, 2, 131063, 65536, 0, 524281, 65536, 2, 524282, 65536, 0, 524283, 65536, 0, 524284, 65536, 0, 393212, 65536, 0, 393211, 65536, 2, 393213, 131072, 1, 458749, 0, 2, 327675, 65536, 1, 524285, 131072, 2, -131066, 65536, 0, -131065, 65536, 0, -131064, 65536, 0, -131063, 65536, 0, -131062, 131072, 1, -65526, 0, 2, 131078, 131072, 2, 65542, 65536, 1, 65543, 131072, 2, 7, 65536, 1, 8, 131072, 1, 65544, 0, 2, 393224, 65536, 0, 393223, 65536, 0, 196616, 0, 2, 262152, 131072, 2, 393221, 65536, 0, 131077, 65536, 1, 262149, 0, 3, 196613, 0, 2, 393222, 65536, 0, 262151, 0, 0, 131080, 0, 2, 393220, 65536, 0, 393219, 65536, 0, 393218, 65536, 0, 393217, 65536, 0, 393216, 65536, 0, 458751, 65536, 0, 458750, 65536, 2, 393214, 0, 2, 327678, 131072, 1, 327677, 65536, 0, 327676, 65536, 0, -131067, 0, 0, 393225, 65536, 0)
-
-[node name="house" parent="." instance=ExtResource("13_fu4m1")]
-position = Vector2(7324, 1504)
-rotation = 1.5708
-
 [node name="Projectiles" type="Node2D" parent="."]
-
-[node name="steam_vent" parent="." instance=ExtResource("14_yg2xr")]
-position = Vector2(987, 517)
-
-[node name="Gate" parent="." instance=ExtResource("3_u16mp")]
 
 [node name="Player" parent="." instance=ExtResource("4_rjaod")]
 position = Vector2(3723, 1229)
@@ -165,8 +17,5 @@ position = Vector2(3723, 1229)
 energy = 0.25
 blend_mode = 1
 
-[connection signal="player_entered" from="house" to="." method="_on_house_player_entered"]
-[connection signal="player_exited" from="house" to="." method="_on_house_player_exited"]
-[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="granade" from="Player" to="." method="_on_player_granade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]

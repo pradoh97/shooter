@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var max_speed : int = 500
 var speed : int = max_speed
-
+#var laser_scene : PackedScene = preload("res://scenes/projectiles/laser.tscn")
 signal laser(initial_position : Vector2, initial_direction : Vector2)
 signal granade(initial_position : Vector2, initial_direction : Vector2)
 
@@ -27,8 +27,8 @@ func _process(_delta):
 	if Input.is_action_pressed("primary action") and can_laser:
 		var laser_mark = $laser_start_position.get_child(randi() % $laser_start_position.get_child_count())
 		can_laser = false
-		$GPUParticles2D.emitting = true
-		$GPUParticles2D2.emitting = true
+		$shoot_particles/GPUParticles2D.emitting = true
+		$shoot_particles/GPUParticles2D2.emitting = true
 		$laser_timer.start()
 		laser.emit(laser_mark.global_position, projectile_direction)
 	

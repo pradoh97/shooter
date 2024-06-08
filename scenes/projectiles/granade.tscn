@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://lf80s8h1r0hp"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/granade.gd" id="1_6afov"]
-[ext_resource type="Texture2D" uid="uid://c0ubqd1aoim17" path="res://graphics/projectiles/grenade.png" id="1_oln6e"]
-[ext_resource type="Texture2D" uid="uid://cy07vfvbi5ax8" path="res://graphics/explosions/explosion_3.png" id="3_atelx"]
-[ext_resource type="Texture2D" uid="uid://rrv4deatfrg5" path="res://graphics/lights/textures/circle.png" id="4_s86p0"]
+[ext_resource type="Texture2D" uid="uid://way17y7t83vb" path="res://graphics/projectiles/grenade.png" id="1_oln6e"]
+[ext_resource type="Texture2D" uid="uid://iw1084euxhti" path="res://graphics/explosions/explosion_3.png" id="3_atelx"]
+[ext_resource type="Texture2D" uid="uid://dnya3vgcsx46k" path="res://graphics/lights/textures/circle.png" id="4_s86p0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d1p8v"]
 friction = 10.0
@@ -11,6 +11,49 @@ bounce = 0.4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4bl2"]
 radius = 74.3303
+
+[sub_resource type="Animation" id="Animation_3g8js"]
+resource_name = "active"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 0.9, 1, 1.1, 1.2, 1.3, 1.35, 1.4, 1.45, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explode"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.773856, 7.70092e-07, 5.77569e-07, 1), Color(0.773856, 7.70092e-07, 5.77569e-07, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_agtdy"]
 resource_name = "exploding"
@@ -78,36 +121,41 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_3g8js"]
-resource_name = "active"
-length = 1.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 0.9, 1, 1.1, 1.2, 1.3, 1.35, 1.4, 1.45, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PointLight2D:energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.275, 0.5, 0.725, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0]
+"values": [0.0, 5.0, 2.0, 10.0, 1.0, 0.0]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"explode"
-}]
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PointLight2D:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.69498, 0.326737, 1), Color(1, 0.69498, 0.326737, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PointLight2D:texture_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.275, 0.5, 0.725),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.5, 1.0, 2.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c77op"]
@@ -118,7 +166,7 @@ _data = {
 
 [node name="granade" type="RigidBody2D"]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 22
 physics_material_override = SubResource("PhysicsMaterial_d1p8v")
 gravity_scale = 0.0
 linear_damp = 1.6
@@ -129,7 +177,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_oln6e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_i4bl2")
 
@@ -145,5 +192,6 @@ libraries = {
 autoplay = "active"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.773856, 7.70092e-07, 5.77569e-07, 1)
+color = Color(1, 0.69498, 0.326737, 1)
+energy = 0.0
 texture = ExtResource("4_s86p0")

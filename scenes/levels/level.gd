@@ -1,12 +1,8 @@
 extends Node2D
+class_name level
 
 var laser_scene : PackedScene = preload("res://scenes/projectiles/laser.tscn")
 var granade_scene : PackedScene = preload("res://scenes/projectiles/granade.tscn")
-
-func _on_gate_player_entered_gate(_body):
-	var player_animation = get_tree().create_tween()
-	player_animation.tween_property($Player, "speed", 0, 0.5)
-
 
 func _on_player_granade(initial_position, initial_direction):
 	var granade = granade_scene.instantiate() as RigidBody2D

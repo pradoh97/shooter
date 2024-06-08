@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://sgk3g7wboauj"]
+[gd_scene load_steps=6 format=3 uid="uid://sgk3g7wboauj"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/laser.gd" id="1_4xf1n"]
-[ext_resource type="Texture2D" uid="uid://c4yc4houhi3j" path="res://graphics/projectiles/blue.png" id="1_o45o6"]
+[ext_resource type="Texture2D" uid="uid://bhgnlr7ht7hmj" path="res://graphics/projectiles/blue.png" id="1_o45o6"]
+[ext_resource type="PackedScene" uid="uid://ceb62qss06swv" path="res://scenes/projectiles/shoot_particles.tscn" id="3_u6spy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1j7a"]
 radius = 4.0
@@ -12,7 +13,7 @@ polygon = PackedVector2Array(1, -81, -3, -78, -6, -68, -7, -41, -6, -22, 0, 62, 
 
 [node name="laser" type="Area2D"]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 22
 script = ExtResource("1_4xf1n")
 metadata/_edit_group_ = true
 
@@ -25,3 +26,10 @@ shape = SubResource("CapsuleShape2D_s1j7a")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_hstka")
 sdf_collision = false
+
+[node name="shoot_particles" parent="." instance=ExtResource("3_u6spy")]
+position = Vector2(0, 55)
+rotation = -1.57079
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="particles_end" from="shoot_particles" to="." method="_on_shoot_particles_particles_end"]
