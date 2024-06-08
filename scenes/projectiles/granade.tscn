@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://lf80s8h1r0hp"]
+[gd_scene load_steps=10 format=3 uid="uid://lf80s8h1r0hp"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/granade.gd" id="1_6afov"]
 [ext_resource type="Texture2D" uid="uid://c0ubqd1aoim17" path="res://graphics/projectiles/grenade.png" id="1_oln6e"]
-[ext_resource type="Texture2D" uid="uid://cnlrmahdj58ec" path="res://graphics/explosions/explosion_2.png" id="3_2crq6"]
+[ext_resource type="Texture2D" uid="uid://cy07vfvbi5ax8" path="res://graphics/explosions/explosion_3.png" id="3_atelx"]
+[ext_resource type="Texture2D" uid="uid://rrv4deatfrg5" path="res://graphics/lights/textures/circle.png" id="4_s86p0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d1p8v"]
 friction = 10.0
@@ -10,6 +11,110 @@ bounce = 0.4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4bl2"]
 radius = 74.3303
+
+[sub_resource type="Animation" id="Animation_agtdy"]
+resource_name = "exploding"
+length = 0.9
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 63]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:linear_velocity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.375, 0.475),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Explosion:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.725, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3g8js"]
+resource_name = "active"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 0.9, 1, 1.1, 1.2, 1.3, 1.35, 1.4, 1.45, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explode"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c77op"]
+_data = {
+"active": SubResource("Animation_3g8js"),
+"exploding": SubResource("Animation_agtdy")
+}
 
 [node name="granade" type="RigidBody2D"]
 collision_layer = 8
@@ -24,10 +129,21 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_oln6e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_i4bl2")
 
 [node name="Explosion" type="Sprite2D" parent="."]
-texture = ExtResource("3_2crq6")
+texture = ExtResource("3_atelx")
 hframes = 8
 vframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c77op")
+}
+autoplay = "active"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.773856, 7.70092e-07, 5.77569e-07, 1)
+texture = ExtResource("4_s86p0")

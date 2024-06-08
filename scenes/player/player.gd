@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-const speed : int = 500
+@export var max_speed : int = 500
+var speed : int = max_speed
 
 signal laser(initial_position : Vector2, initial_direction : Vector2)
 signal granade(initial_position : Vector2, initial_direction : Vector2)

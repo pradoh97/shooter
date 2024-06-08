@@ -159,12 +159,14 @@ position = Vector2(987, 517)
 [node name="Gate" parent="." instance=ExtResource("3_u16mp")]
 
 [node name="Player" parent="." instance=ExtResource("4_rjaod")]
-position = Vector2(5245, 426)
+position = Vector2(3723, 1229)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.25
 blend_mode = 1
 
+[connection signal="player_entered" from="house" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="house" to="." method="_on_house_player_exited"]
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="granade" from="Player" to="." method="_on_player_granade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
