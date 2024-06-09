@@ -17,6 +17,7 @@ func _on_body_entered(body):
 	$CollisionShape2D.disabled = true
 	$LightOccluder2D.visible = false
 	$Sprite2D.visible = false
+	$PointLight2D.enabled = false
 	$shoot_particles/Timer.start()
 	
 	speed=0

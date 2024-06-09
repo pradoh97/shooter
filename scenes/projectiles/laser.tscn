@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://sgk3g7wboauj"]
+[gd_scene load_steps=7 format=3 uid="uid://sgk3g7wboauj"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/laser.gd" id="1_4xf1n"]
 [ext_resource type="Texture2D" uid="uid://bhgnlr7ht7hmj" path="res://graphics/projectiles/blue.png" id="1_o45o6"]
 [ext_resource type="PackedScene" uid="uid://ceb62qss06swv" path="res://scenes/projectiles/shoot_particles.tscn" id="3_u6spy"]
+[ext_resource type="Texture2D" uid="uid://dnya3vgcsx46k" path="res://graphics/lights/textures/circle.png" id="4_k8q2k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1j7a"]
 radius = 4.0
@@ -24,12 +25,20 @@ texture = ExtResource("1_o45o6")
 shape = SubResource("CapsuleShape2D_s1j7a")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource("OccluderPolygon2D_hstka")
 sdf_collision = false
 
 [node name="shoot_particles" parent="." instance=ExtResource("3_u6spy")]
 position = Vector2(0, 55)
 rotation = -1.57079
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1.6942e-05, 0.664015, 0.86094, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("4_k8q2k")
+texture_scale = 0.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="particles_end" from="shoot_particles" to="." method="_on_shoot_particles_particles_end"]

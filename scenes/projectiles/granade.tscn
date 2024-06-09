@@ -194,4 +194,5 @@ autoplay = "active"
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(1, 0.69498, 0.326737, 1)
 energy = 0.0
+shadow_enabled = true
 texture = ExtResource("4_s86p0")
