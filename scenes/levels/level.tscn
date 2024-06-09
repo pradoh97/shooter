@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddqbi6wbgnii4"]
+[gd_scene load_steps=5 format=3 uid="uid://ddqbi6wbgnii4"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_7jahi"]
 [ext_resource type="TileSet" uid="uid://df2g8ltj78w18" path="res://scenes/levels/house.tres" id="2_rh28a"]
+[ext_resource type="PackedScene" uid="uid://d3avwp6o3jmww" path="res://scenes/user interface/ui.tscn" id="4_q6uge"]
 [ext_resource type="PackedScene" uid="uid://d0eve05x3sq62" path="res://scenes/player/player.tscn" id="4_rjaod"]
 
 [node name="Level" type="Node2D"]
@@ -21,6 +22,8 @@ position = Vector2(3723, 1229)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.25
 blend_mode = 1
+
+[node name="ui" parent="." instance=ExtResource("4_q6uge")]
 
 [connection signal="granade" from="Player" to="." method="_on_player_granade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]

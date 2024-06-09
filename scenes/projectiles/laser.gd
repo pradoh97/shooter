@@ -14,7 +14,7 @@ func _on_body_entered(body):
 	$shoot_particles/GPUParticles2D.emitting = true
 	$shoot_particles/GPUParticles2D2.emitting = true
 	
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.set_deferred("disabled", true)
 	$LightOccluder2D.visible = false
 	$Sprite2D.visible = false
 	$PointLight2D.enabled = false
