@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://wgglub5vnte"]
+[gd_scene load_steps=9 format=3 uid="uid://wgglub5vnte"]
 
 [ext_resource type="PackedScene" uid="uid://ddqbi6wbgnii4" path="res://scenes/levels/level.tscn" id="1_yony3"]
 [ext_resource type="PackedScene" uid="uid://gs57lgiq0qk5" path="res://scenes/objects/light.tscn" id="2_en1ix"]
 [ext_resource type="Script" path="res://scenes/levels/inside.gd" id="2_xdcde"]
+[ext_resource type="PackedScene" uid="uid://sp0wnhjmievo" path="res://scenes/levels/outside.tscn" id="3_ogh4j"]
 [ext_resource type="PackedScene" uid="uid://c7y0l2l5evmqs" path="res://scenes/objects/wall-light.tscn" id="3_yqc3k"]
 [ext_resource type="PackedScene" uid="uid://kk8u3yt0k5lj" path="res://scenes/enemies/drone.tscn" id="4_6mmsv"]
 [ext_resource type="PackedScene" uid="uid://cey7glpwrr7" path="res://scenes/objects/light_fan.tscn" id="4_7j8fp"]
@@ -12,6 +13,7 @@ size = Vector2(103, 770)
 
 [node name="inside" instance=ExtResource("1_yony3")]
 script = ExtResource("2_xdcde")
+next_scene = ExtResource("3_ogh4j")
 
 [node name="TileMap" parent="ground" index="0"]
 layer_0/name = "floor"

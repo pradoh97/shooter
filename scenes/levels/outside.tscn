@@ -161,7 +161,7 @@ position = Vector2(5470, -1241)
 position = Vector2(4254, 1385)
 
 [node name="Player" parent="." index="2"]
-position = Vector2(5550, -795)
+position = Vector2(742, 205)
 
 [node name="Gate" parent="." index="4" instance=ExtResource("2_qoil0")]
 
