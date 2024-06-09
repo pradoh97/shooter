@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://4nys8gc5q5wj"]
+[gd_scene load_steps=5 format=3 uid="uid://4nys8gc5q5wj"]
 
 [ext_resource type="Script" path="res://scenes/objects/gate.gd" id="1_3npjr"]
 [ext_resource type="Texture2D" uid="uid://bwctebkhd2dka" path="res://graphics/objects/gate.png" id="1_plm3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrvh"]
 size = Vector2(847, 75)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wcxcb"]
+polygon = PackedVector2Array(208, 89, 203, 51, 219, 9, 269, -19, 176.075, -64.2401, 117, -93, -633, -165, -687, -1308, 1932, -1325, 1833, -150, 1249, -85, 1019, -10, 1045, 15, 1058, 41, 1055, 69, 1064, 84)
 
 [node name="Gate" type="StaticBody2D"]
 collision_layer = 16
@@ -23,5 +26,8 @@ collision_layer = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(634.5, 27.5)
 shape = SubResource("RectangleShape2D_8vrvh")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_wcxcb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -9,6 +9,7 @@ func _on_player_granade(initial_position, initial_direction):
 	granade.position = initial_position
 	granade.linear_velocity = initial_direction * granade.speed
 	$Projectiles.add_child(granade)
+	$ui.update_granade_text()
 
 
 func _on_player_laser(initial_position, initial_direction):
@@ -17,7 +18,7 @@ func _on_player_laser(initial_position, initial_direction):
 	laser.direction = initial_direction
 	laser.rotation_degrees = rad_to_deg(initial_direction.angle()) + 90
 	$Projectiles.add_child(laser)
-
+	$ui.update_laser_text()
 
 func _on_house_player_entered():
 	var camera_zoom = get_tree().create_tween()

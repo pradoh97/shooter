@@ -24,7 +24,8 @@ func _process(_delta):
 	look_at(get_global_mouse_position())
 	var projectile_direction = (get_global_mouse_position() - position).normalized()
 	
-	if Input.is_action_pressed("primary action") and can_laser:
+	if Input.is_action_pressed("primary action") and can_laser and globals.laser_amount > 0:
+		globals.laser_amount -= 1
 		var laser_mark = $laser_start_position.get_child(randi() % $laser_start_position.get_child_count())
 		can_laser = false
 		$shoot_particles/GPUParticles2D.emitting = true
@@ -32,7 +33,8 @@ func _process(_delta):
 		$laser_timer.start()
 		laser.emit(laser_mark.global_position, projectile_direction)
 	
-	if Input.is_action_pressed("secondary action") and can_granade:
+	if Input.is_action_pressed("secondary action") and can_granade and globals.granade_amount > 0:
+		globals.granade_amount -= 1
 		var granade_mark = $laser_start_position.get_child(randi() % $laser_start_position.get_child_count())
 		can_granade = false
 		$granade_timer.start()

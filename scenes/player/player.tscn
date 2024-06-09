@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ceb62qss06swv" path="res://scenes/projectiles/shoot_particles.tscn" id="3_3dtcq"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qgn68"]
-polygon = PackedVector2Array(-5.99999, -55, -15, -62, -23, -60, -35, -59, -47, -57, -59, -57, -64, -49, -73, -47, -89, -41, -92, -30, -98, -17, -96, -9, -97, 7, -88, 14, -89, 19, -82, 32, -79, 39, -74, 47, -63, 60, -47, 59, -14, 50, -3.99999, 45, 5.00001, 41, 12, 41, 10, -30, 5.00001, -44, -1.99999, -50)
+polygon = PackedVector2Array(-21, -25, -31, -33, -45, -35, -54, -36, -62, -32, -69, -20, -73, -4, -70, 11, -63, 23, -53, 29, -39, 33, -27, 27, -21, 17, -12, -2.38419e-06, -14, -13)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f18m7"]
 radius = 48.0

@@ -28,7 +28,7 @@ color = Color(1, 0.267521, 0.106467, 1)
 energy = 5.0
 shadow_enabled = true
 shadow_filter = 2
-shadow_filter_smooth = 8.0
+shadow_filter_smooth = 2.0
 texture = ExtResource("2_yimau")
 texture_scale = 6.0
 
