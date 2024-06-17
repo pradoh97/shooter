@@ -5,6 +5,7 @@ var speed : int = max_speed
 #var laser_scene : PackedScene = preload("res://scenes/projectiles/laser.tscn")
 signal laser(initial_position : Vector2, initial_direction : Vector2)
 signal granade(initial_position : Vector2, initial_direction : Vector2)
+signal update_stats
 
 var can_laser : bool = true
 var can_granade : bool = true
@@ -47,3 +48,10 @@ func _on_laser_timer_timeout():
 
 func _on_granade_timer_timeout():
 	can_granade = true
+
+func add_item(type : String):
+	if type == 'laser':
+		globals.laser_amount += 5
+	if type == 'granade':
+		globals.granade_amount += 1
+	update_stats.emit()

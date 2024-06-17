@@ -28,3 +28,8 @@ func _on_house_player_entered():
 func _on_house_player_exited():
 	var camera_zoom = get_tree().create_tween()
 	camera_zoom.tween_property($Player/Camera2D, "zoom", Vector2(0.5,0.5), 0.5)
+
+
+func _on_player_update_stats():
+	$ui.update_laser_text()
+	$ui.update_granade_text()
