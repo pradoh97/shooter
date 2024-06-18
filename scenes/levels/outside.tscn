@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bdil3hxr4n5wb" path="res://scenes/houses/house.tscn" id="12_rxqha"]
 [ext_resource type="PackedScene" uid="uid://b4th7m81qm623" path="res://scenes/objects/toilet.tscn" id="14_aiark"]
 [ext_resource type="PackedScene" uid="uid://cgyfe1lvcgh7o" path="res://scenes/objects/box.tscn" id="15_vxtfd"]
-[ext_resource type="PackedScene" uid="uid://dtherhbsswpig" path="res://scenes/items/item.tscn" id="17_mgrxg"]
+[ext_resource type="PackedScene" uid="uid://d0d25ty4xo7di" path="res://scenes/enemies/scout.tscn" id="17_lf7q2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ax80c"]
 resource_name = "walls"
@@ -150,6 +150,7 @@ layer_1/tile_data = PackedInt32Array(-3, 65536, 0, -4, 65536, 0, -5, 65536, 0, -
 
 [node name="steam_vent" parent="ground" index="10" instance=ExtResource("11_e8rp1")]
 position = Vector2(987, 517)
+collision_layer = 4
 
 [node name="house" parent="ground" index="11" instance=ExtResource("12_rxqha")]
 position = Vector2(7324, 1504)
@@ -157,16 +158,20 @@ rotation = 1.5708
 
 [node name="toilet" parent="ground" index="12" instance=ExtResource("14_aiark")]
 position = Vector2(5470, -1241)
+rotation = 6.28318
 
 [node name="box" parent="ground" index="13" instance=ExtResource("15_vxtfd")]
 position = Vector2(4254, 1385)
-
-[node name="item" parent="." index="1" instance=ExtResource("17_mgrxg")]
-position = Vector2(-113, 605)
+rotation = -1.57079
 
 [node name="Player" parent="." index="3"]
-position = Vector2(742, 341)
+position = Vector2(642, 185)
 
-[node name="Gate" parent="." index="5" instance=ExtResource("2_qoil0")]
+[node name="Gate" parent="." index="4" instance=ExtResource("2_qoil0")]
 
+[node name="scout" parent="." index="7" instance=ExtResource("17_lf7q2")]
+position = Vector2(192, 416)
+
+[connection signal="player_entered" from="ground/house" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="ground/house" to="." method="_on_house_player_exited"]
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]

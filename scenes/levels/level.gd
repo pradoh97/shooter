@@ -3,33 +3,35 @@ class_name level
 
 var laser_scene : PackedScene = preload("res://scenes/projectiles/laser.tscn")
 var granade_scene : PackedScene = preload("res://scenes/projectiles/granade.tscn")
+var item_scene : PackedScene = preload("res://scenes/items/item.tscn")
+
+func _ready():
+	for container in get_tree().get_nodes_in_group("containers"):
+		container.connect("open", _on_container_opened)
+	for scout in get_tree().get_nodes_in_group("scouts"):
+		scout.connect("laser", _on_scout_laser)
+
+func _on_container_opened(pos, dir):
+	var item = item_scene.instantiate()
+	item.position = pos
+	item.direction = dir
+	$Items.call_deferred("add_child", item)
 
 func _on_player_granade(initial_position, initial_direction):
 	var granade = granade_scene.instantiate() as RigidBody2D
 	granade.position = initial_position
 	granade.linear_velocity = initial_direction * granade.speed
 	$Projectiles.add_child(granade)
-	$ui.update_granade_text()
-
 
 func _on_player_laser(initial_position, initial_direction):
+	create_laser(initial_position, initial_direction)
+
+func create_laser(pos, dir):
 	var laser = laser_scene.instantiate() as Area2D
-	laser.position = initial_position 
-	laser.direction = initial_direction
-	laser.rotation_degrees = rad_to_deg(initial_direction.angle()) + 90
+	laser.position = pos
+	laser.direction = dir
+	laser.rotation_degrees = rad_to_deg(dir.angle()) + 90
 	$Projectiles.add_child(laser)
-	$ui.update_laser_text()
 
-func _on_house_player_entered():
-	var camera_zoom = get_tree().create_tween()
-	camera_zoom.tween_property($Player/Camera2D, "zoom", Vector2(1,1), 0.5)
-
-
-func _on_house_player_exited():
-	var camera_zoom = get_tree().create_tween()
-	camera_zoom.tween_property($Player/Camera2D, "zoom", Vector2(0.5,0.5), 0.5)
-
-
-func _on_player_update_stats():
-	$ui.update_laser_text()
-	$ui.update_granade_text()
+func _on_scout_laser(pos, dir):
+	create_laser(pos, dir)

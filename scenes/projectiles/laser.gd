@@ -9,17 +9,17 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if "hit" in body:
-		body.hit()
-	
+		body.hit(2)
+
 	$shoot_particles/GPUParticles2D.emitting = true
 	$shoot_particles/GPUParticles2D2.emitting = true
-	
+
 	$CollisionShape2D.set_deferred("disabled", true)
 	$LightOccluder2D.visible = false
 	$Sprite2D.visible = false
 	$PointLight2D.enabled = false
 	$shoot_particles/Timer.start()
-	
+
 	speed=0
 
 

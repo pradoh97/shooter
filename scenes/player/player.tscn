@@ -11,7 +11,7 @@ polygon = PackedVector2Array(-21, -25, -31, -33, -45, -35, -54, -36, -62, -32, -
 radius = 48.0
 height = 100.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["entity"]]
 collision_mask = 22
 script = ExtResource("1_xn82d")
 metadata/_edit_group_ = true
