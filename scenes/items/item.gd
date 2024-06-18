@@ -25,5 +25,9 @@ func _on_body_entered(_body):
 	if type == 'granade':
 		globals.granade = globals.granade + 1
 	if type == 'health':
-		globals.health = globals.health + 10
+
+		if(globals.health >= 100):
+			globals.health = 100
+		else :
+			globals.health = globals.health + 10
 	queue_free()

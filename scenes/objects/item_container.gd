@@ -6,5 +6,5 @@ var opened : bool = false
 
 @onready var current_direction : Vector2 = Vector2.DOWN.rotated(rotation)
 
-func hit():
+func hit(damage):
 	pass

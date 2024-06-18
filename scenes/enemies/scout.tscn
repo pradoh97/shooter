@@ -41,6 +41,10 @@ position = Vector2(138, 12)
 wait_time = 0.5
 autostart = true
 
+[node name="shield" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="laser_cooldown" to="." method="_on_laser_cooldown_timeout"]
+[connection signal="timeout" from="shield" to="." method="_on_shield_timeout"]

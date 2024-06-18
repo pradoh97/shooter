@@ -1,6 +1,7 @@
 extends item_container
 
-func hit():
+func hit(damage):
+	print("ouch")
 	if not opened:
 		$LidSprite.hide()
 		var pos = $spawn_position/Marker2D.global_position

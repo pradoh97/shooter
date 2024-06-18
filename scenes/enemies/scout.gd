@@ -3,6 +3,8 @@ extends CharacterBody2D
 var player_nearby : bool = false
 var can_laser : bool = true
 var shoot_from_gun2 : int = false
+var health = randi_range(4, 9)
+var shielded = false
 
 signal laser(pos, dir)
 
@@ -28,4 +30,13 @@ func _on_laser_cooldown_timeout():
 	can_laser = true
 
 func hit(damage):
-	queue_free()
+	if(not shielded):
+		health -= damage
+		shielded = true
+		$shield.start()
+	if(health <= 0):
+		queue_free()
+
+
+func _on_shield_timeout():
+	shielded = false

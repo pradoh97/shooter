@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var max_speed : int = 500
 var speed : int = max_speed
-#var laser_scene : PackedScene = preload("res://scenes/projectiles/laser.tscn")
+var shielded : bool = false
 signal laser(initial_position : Vector2, initial_direction : Vector2)
 signal granade(initial_position : Vector2, initial_direction : Vector2)
 
@@ -50,4 +50,12 @@ func _on_granade_timer_timeout():
 	can_granade = true
 
 func hit(damage):
-	globals.health -= damage
+	if not shielded:
+		globals.health -= damage
+		shielded = true
+		$shield.start()
+	if globals.health <= 0:
+		queue_free()
+
+func _on_shield_timeout():
+	shielded = false
