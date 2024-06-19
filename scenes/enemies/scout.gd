@@ -34,9 +34,11 @@ func hit(damage):
 		health -= damage
 		shielded = true
 		$shield.start()
+		$Sprite2D.material.set_shader_parameter("progress", 1)
 	if(health <= 0):
 		queue_free()
 
 
 func _on_shield_timeout():
+	$Sprite2D.material.set_shader_parameter("progress", 0)
 	shielded = false
