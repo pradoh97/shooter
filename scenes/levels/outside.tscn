@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://sp0wnhjmievo"]
+[gd_scene load_steps=22 format=3 uid="uid://sp0wnhjmievo"]
 
 [ext_resource type="PackedScene" uid="uid://ddqbi6wbgnii4" path="res://scenes/levels/level.tscn" id="1_48myc"]
 [ext_resource type="Texture2D" uid="uid://dudec0k2u8k3d" path="res://graphics/ground/stones.png" id="2_85qsl"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b4th7m81qm623" path="res://scenes/objects/toilet.tscn" id="14_aiark"]
 [ext_resource type="PackedScene" uid="uid://cgyfe1lvcgh7o" path="res://scenes/objects/box.tscn" id="15_vxtfd"]
 [ext_resource type="PackedScene" uid="uid://d0d25ty4xo7di" path="res://scenes/enemies/scout.tscn" id="17_lf7q2"]
+[ext_resource type="PackedScene" uid="uid://bqpqxxlslosw" path="res://scenes/enemies/bug.tscn" id="18_c0a42"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ax80c"]
 resource_name = "walls"
@@ -165,12 +166,15 @@ position = Vector2(4254, 1385)
 rotation = -1.57079
 
 [node name="Player" parent="." index="3"]
-position = Vector2(642, 185)
+position = Vector2(1397, 1317)
 
 [node name="Gate" parent="." index="4" instance=ExtResource("2_qoil0")]
 
 [node name="scout" parent="." index="7" instance=ExtResource("17_lf7q2")]
 position = Vector2(192, 416)
+
+[node name="bug" parent="." index="8" instance=ExtResource("18_c0a42")]
+position = Vector2(1004, 1000)
 
 [connection signal="player_entered" from="ground/house" to="." method="_on_house_player_entered"]
 [connection signal="player_exited" from="ground/house" to="." method="_on_house_player_exited"]
