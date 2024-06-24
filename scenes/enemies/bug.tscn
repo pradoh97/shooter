@@ -35,7 +35,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfysj"]
 shader = ExtResource("2_2acp6")
-shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/progress = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h1soj"]

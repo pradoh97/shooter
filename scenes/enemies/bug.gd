@@ -6,7 +6,7 @@ var attack_player = false
 var can_attack = false
 var lives = 5
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var location_to_move = globals.player_pos - global_position
 	look_at(globals.player_pos)
 	velocity = location_to_move.normalized() * SPEED
@@ -20,7 +20,7 @@ func _on_notice_area_body_exited(_body):
 	$AnimatedSprite2D.stop()
 	noticed_player = false
 
-func _on_attack_area_body_entered(body):
+func _on_attack_area_body_entered(_body):
 	$AnimatedSprite2D.play("attack")
 	attack_player = true
 

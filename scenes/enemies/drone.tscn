@@ -1,10 +1,77 @@
-[gd_scene load_steps=4 format=3 uid="uid://kk8u3yt0k5lj"]
+[gd_scene load_steps=10 format=3 uid="uid://kk8u3yt0k5lj"]
 
 [ext_resource type="Texture2D" uid="uid://bkb8kburlccsg" path="res://graphics/enemies/drone.png" id="1_8e04n"]
 [ext_resource type="Script" path="res://scenes/enemies/drone.gd" id="1_pitnv"]
+[ext_resource type="Texture2D" uid="uid://iw1084euxhti" path="res://graphics/explosions/explosion_3.png" id="3_m4im1"]
+[ext_resource type="Shader" path="res://scenes/enemies/drone.gdshader" id="3_nva70"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dtvu7"]
+shader = ExtResource("3_nva70")
+shader_parameter/progress = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t3vgr"]
 radius = 74.027
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhag7"]
+radius = 871.305
+
+[sub_resource type="Animation" id="Animation_laqm3"]
+resource_name = "explosion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [23, 63]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g3ca4"]
+_data = {
+"explosion": SubResource("Animation_laqm3")
+}
 
 [node name="drone" type="CharacterBody2D" groups=["entity"]]
 light_mask = 2
@@ -12,17 +79,44 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_pitnv")
 
+[node name="Explosion" type="Sprite2D" parent="."]
+texture = ExtResource("3_m4im1")
+hframes = 8
+vframes = 8
+frame = 23
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dtvu7")
+rotation = 1.57079
 texture = ExtResource("1_8e04n")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.57079
 polygon = PackedVector2Array(-61, -33, -143, -15, -150, 19, -68, 13)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-position = Vector2(-3, -12)
+position = Vector2(15, -5)
+rotation = 1.57079
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(-64, -24, -144, -19, -152, 16, -74, 18)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)
 shape = SubResource("CircleShape2D_t3vgr")
+
+[node name="notice_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="notice_area"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_jhag7")
+
+[node name="hit_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g3ca4")
+}
+
+[connection signal="body_entered" from="notice_area" to="." method="_on_notice_area_body_entered"]
+[connection signal="timeout" from="hit_timer" to="." method="_on_timer_timeout"]
