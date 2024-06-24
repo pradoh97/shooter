@@ -12,7 +12,7 @@ func update_laser_text():
 	laser_label.text = str(globals.laser)
 	if globals.laser == 0:
 		$weapons_counter/laser.modulate = Color(1, 0, 0)
-	else : $weapons_counter/granade.modulate = Color(1, 1, 1)
+	else : $weapons_counter/laser.modulate = Color(1, 1, 1)
 
 func update_granade_text():
 	granade_label.text = str(globals.granade)
