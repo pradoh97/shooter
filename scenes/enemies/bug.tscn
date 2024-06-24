@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bqpqxxlslosw"]
+[gd_scene load_steps=38 format=3 uid="uid://bqpqxxlslosw"]
 
 [ext_resource type="Texture2D" uid="uid://cds3rtr8yu25x" path="res://graphics/enemies/bug/attack/00010.png" id="1_jitpo"]
 [ext_resource type="Script" path="res://scenes/enemies/bug.gd" id="1_wy6tg"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://dj40ncq7f4m13" path="res://graphics/enemies/bug/walk/00006.png" id="28_yesum"]
 [ext_resource type="Texture2D" uid="uid://d1xje8tp2t8iw" path="res://graphics/enemies/bug/walk/00007.png" id="29_ls6ae"]
 [ext_resource type="Texture2D" uid="uid://22gvvwgsucod" path="res://graphics/enemies/bug/walk/00008.png" id="30_1dfx0"]
+[ext_resource type="AudioStream" uid="uid://d1n1m4u8kpehp" path="res://audio/organic_impact.mp3" id="33_32nqk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfysj"]
 shader = ExtResource("2_2acp6")
@@ -180,6 +181,10 @@ polygon = PackedVector2Array(-8, -84, -49, -2, -55, 39, -45, 70, -16, 85, 29, 82
 [node name="hit_shader_timer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_32nqk")
+volume_db = -10.0
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="notice_area" to="." method="_on_notice_area_body_entered"]

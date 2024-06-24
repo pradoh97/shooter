@@ -15,22 +15,22 @@ func _ready():
 
 func _physics_process(delta):
 	var collision = null
-	
+
 	if pursuing_player and can_move:
 		direction = (globals.player_pos - global_position).normalized()
 		look_at(globals.player_pos)
 		var tween = create_tween()
 		tween.tween_property(self, "speed", MAX_SPEED, 2)
-	
+
 	if not can_move:
 		pursuing_player = false
 		speed -= 200
 		var tween = create_tween()
 		tween.tween_property(self, "speed", 0, 2)
-	
+
 	velocity = speed * direction * delta
 	collision = move_and_collide(velocity)
-	
+
 	if collision:
 		hit(health)
 	if explosion_active:
@@ -39,12 +39,13 @@ func _physics_process(delta):
 			var in_range = target.global_position.distance_to(global_position) < 200
 			if "hit" in target and in_range:
 				target.hit(2)
-			
+
 
 func hit(damage):
 	if vulnerable:
 		health -= damage
 		vulnerable = false
+		$AudioStreamPlayer2D.play()
 		$hit_timer.start()
 		$Sprite2D.material.set_shader_parameter("progress", 1)
 	if health <= 0:
@@ -58,4 +59,4 @@ func _on_notice_area_body_entered(_body):
 func _on_timer_timeout():
 	vulnerable = true
 	$Sprite2D.material.set_shader_parameter("progress", 0)
-	
+

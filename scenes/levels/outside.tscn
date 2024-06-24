@@ -191,7 +191,7 @@ position = Vector2(5318, -994)
 rotation = -5.07036e-06
 
 [node name="Player" parent="." index="3"]
-position = Vector2(1200, 1195)
+position = Vector2(4236, 1430)
 
 [node name="Gate" parent="." index="4" instance=ExtResource("2_qoil0")]
 

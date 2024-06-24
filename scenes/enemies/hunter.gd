@@ -50,6 +50,7 @@ func _on_hit_timeout():
 func hit(damage):
 	if vulnerable:
 		health -= damage
+		$AudioStreamPlayer2D.play()
 		vulnerable = false
 		$timers/hit.start()
 	if health <= 0:

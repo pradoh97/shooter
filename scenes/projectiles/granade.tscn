@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://lf80s8h1r0hp"]
+[gd_scene load_steps=12 format=3 uid="uid://lf80s8h1r0hp"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/granade.gd" id="1_6afov"]
 [ext_resource type="Texture2D" uid="uid://way17y7t83vb" path="res://graphics/projectiles/grenade.png" id="1_oln6e"]
 [ext_resource type="Texture2D" uid="uid://iw1084euxhti" path="res://graphics/explosions/explosion_3.png" id="3_atelx"]
 [ext_resource type="Texture2D" uid="uid://dnya3vgcsx46k" path="res://graphics/lights/textures/circle.png" id="4_s86p0"]
+[ext_resource type="AudioStream" uid="uid://8x0halimlswl" path="res://audio/explosion.wav" id="5_rdp8b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d1p8v"]
 friction = 10.0
@@ -157,6 +158,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [1.0, 1.5, 1.0, 2.0, 1.0]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c77op"]
 _data = {
@@ -195,7 +208,7 @@ libraries = {
 autoplay = "active"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.773856, 7.70092e-07, 5.77569e-07, 1)
+color = Color(1, 0.69498, 0.326737, 1)
 energy = 0.0
 shadow_enabled = true
 texture = ExtResource("4_s86p0")
@@ -206,6 +219,10 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_bv57s")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rdp8b")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

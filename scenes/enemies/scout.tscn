@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0d25ty4xo7di"]
+[gd_scene load_steps=8 format=3 uid="uid://d0d25ty4xo7di"]
 
 [ext_resource type="Texture2D" uid="uid://jotby0pcuxq6" path="res://graphics/enemies/scout.png" id="1_1r8bl"]
 [ext_resource type="Script" path="res://scenes/enemies/scout.gd" id="1_egby6"]
 [ext_resource type="Shader" path="res://scenes/enemies/scout.gdshader" id="2_omuao"]
+[ext_resource type="AudioStream" uid="uid://g3f6a3fbus60" path="res://audio/solid_impact.ogg" id="4_5ko7b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p4f10"]
 shader = ExtResource("2_omuao")
-shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/progress = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qi3ey"]
@@ -52,6 +52,10 @@ autostart = true
 
 [node name="shield" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5ko7b")
+volume_db = -10.0
 
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]

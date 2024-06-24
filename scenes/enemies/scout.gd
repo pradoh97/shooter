@@ -34,6 +34,7 @@ func hit(damage):
 		health -= damage
 		shielded = true
 		$shield.start()
+		$AudioStreamPlayer2D.play()
 		$Sprite2D.material.set_shader_parameter("progress", 1)
 	if(health <= 0):
 		queue_free()

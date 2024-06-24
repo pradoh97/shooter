@@ -27,7 +27,7 @@ func _on_attack_area_body_entered(_body):
 func _on_attack_area_body_exited(_body):
 	$AnimatedSprite2D.play("walk")
 	attack_player = false
-	
+
 func _on_animated_sprite_2d_animation_looped():
 	if attack_player:
 		globals.health -= 10
@@ -35,6 +35,7 @@ func _on_animated_sprite_2d_animation_looped():
 func hit(damage):
 	lives -= damage
 	$AnimatedSprite2D.material.set_shader_parameter("progress", 1)
+	$AudioStreamPlayer2D.play()
 	$hit_shader_timer.start()
 	if lives <= 0:
 		queue_free()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://kk8u3yt0k5lj"]
+[gd_scene load_steps=11 format=3 uid="uid://kk8u3yt0k5lj"]
 
 [ext_resource type="Texture2D" uid="uid://bkb8kburlccsg" path="res://graphics/enemies/drone.png" id="1_8e04n"]
 [ext_resource type="Script" path="res://scenes/enemies/drone.gd" id="1_pitnv"]
 [ext_resource type="Texture2D" uid="uid://iw1084euxhti" path="res://graphics/explosions/explosion_3.png" id="3_m4im1"]
 [ext_resource type="Shader" path="res://scenes/enemies/drone.gdshader" id="3_nva70"]
+[ext_resource type="AudioStream" uid="uid://g3f6a3fbus60" path="res://audio/solid_impact.ogg" id="5_nuc63"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dtvu7"]
 shader = ExtResource("3_nva70")
@@ -117,6 +118,10 @@ wait_time = 0.2
 libraries = {
 "": SubResource("AnimationLibrary_g3ca4")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_nuc63")
+volume_db = -10.0
 
 [connection signal="body_entered" from="notice_area" to="." method="_on_notice_area_body_entered"]
 [connection signal="timeout" from="hit_timer" to="." method="_on_timer_timeout"]

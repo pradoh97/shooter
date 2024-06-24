@@ -30,4 +30,7 @@ func _on_body_entered(_body):
 			globals.health = 100
 		else :
 			globals.health = globals.health + 10
+	$AudioStreamPlayer2D.play()
+	$Sprite2D.hide()
+	await $AudioStreamPlayer2D.finished
 	queue_free()
